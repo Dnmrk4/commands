@@ -29,17 +29,6 @@ updates() {
   success "updated ubuntu dependancies successfully"
 }
 
-git() {
-  # Git
-  sudo apt install git
-  success "Git installed"
-
-  # Confif git
-  git config --global user.email "danmark.chemuren@gmail.com"
-  git config --global user.name "Dnmrk4"
-  success "updated user email and name to git"
-}
-
 ubuntu() {
   # lightdm
   sudo apt install lightdm
@@ -53,11 +42,6 @@ ubuntu() {
   sudo apt install vlc
   success "installed vlc"
 
-  # slack
-  wget https://downloads.slack-edge.com/linux_releases/slack-desktop-3.3.8-amd64.deb
-  sudo apt install ./slack-desktop-*.deb
-  success "installed slack"
-}
 
 javascript() {
   # node
@@ -99,6 +83,27 @@ javascript() {
   fi
 }
 
+git() {
+  sudo apt-get install git-all
+  #configuration
+  sudo -config
+  success "installed git"
+}
+
+chrome() {
+  sudo apt-get install libxss1 libappindicator1 libindicator7
+  wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+  sudo apt install ./google-chrome*.deb  
+  success "installed stable chrome"
+}
+zsh() {
+  sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+  success "installed oh `my zsh`"
+}
+heroku() {
+  sudo snap install --classic heroku
+  success "heroku installed"
+}
 test() {
   success "If you are seeing this, the script is working"
 }
@@ -109,7 +114,7 @@ main() {
   git
   ubuntu
   javascript
+  chrome
 }
-
 # calling the main function
 main
