@@ -42,6 +42,22 @@ ubuntu() {
   sudo apt install vlc
   success "installed vlc"
 
+  # winehq
+  sudo dpkg --add-architecture i386
+  wget -qO - https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add -
+  #in ubuntu 18.04
+  sudo apt-add-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ bionic main'
+  sudo apt-get update
+  sudo apt-get upgrade
+  sudo apt-get install --install-recommends winehq-stable
+  sudo apt-get install aptitude
+  sudo aptitude install winehq-stable
+  wineversion="$(wine --version)"
+  if [ wineversion ]; then
+    success "winehq installed successfully"
+  else
+    error "error installing winehq"
+  fi
 
 javascript() {
   # node
@@ -63,16 +79,6 @@ javascript() {
     error "error installing npm"
   fi
 
-  # angular
-  sudo npm install -g @angular/cli@6.1.1
-  ngversion="$(ng --version)"
-  if [ ngversion ]; then
-    success "angular 6 installed successfully"
-    ng
-  else
-    error "error installing angular 6"
-  fi
-
   # typescript
   sudo npm install -g typescript
   tsversion="$(tsc -v)"
@@ -81,12 +87,24 @@ javascript() {
   else
     error "error installing typescript"
   fi
+
+  # angular
+  sudo npm install -g @angular/cli@6.1.1
+  ngversion="$(ng --version)"
+  if [ ngversion ]; then
+    success "angular 6 installed successfully"
+  else
+    error "error installing angular 6"
+  fi
 }
 
 git() {
   sudo apt-get install git-all
   #configuration
-  sudo -config
+  # username:
+  git config --global user.name "Dnmrk4"
+  # email address:
+  git config --global user.email "danmark.chemuren@gmail.com"
   success "installed git"
 }
 
@@ -96,9 +114,20 @@ chrome() {
   sudo apt install ./google-chrome*.deb  
   success "installed stable chrome"
 }
+gnome-tweak() {
+  sudo apt install chrome-gnome-shell
+  sudo apt-get install gnome-tweak-tool
+  sudo add-apt-repository ppa:webupd8team/gnome3
+  sudo apt-get update
+  success "installed gnome | now restart the laptop && Search for and download compatible shell themes. For example in 'https://www.gnome-look.org/'."
+}
+adb() {
+  sudo apt-get install adb
+  success "installed adb for android"
+}
 zsh() {
   sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-  success "installed oh `my zsh`"
+  success "installed oh my zsh | now restart the computer"
 }
 heroku() {
   sudo snap install --classic heroku
@@ -111,10 +140,14 @@ test() {
 main() {
   # call all other functions here
   test
-  git
-  ubuntu
-  javascript
-  chrome
+  git()
+  heroku()
+  adb()
+  zsh()
+  gnome_tweak()
+  ubuntu()
+  javascript()
+  chrome()
 }
 # calling the main function
 main
