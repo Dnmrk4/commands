@@ -1,3 +1,4 @@
+#!/bin/zsh
 #!/bin/bash
 
 # resources
@@ -41,6 +42,10 @@ ubuntu() {
   # vlc
   sudo apt install vlc
   success "installed vlc"
+  
+  # font manager
+  sudo apt-get install font-manager
+  success "font manager"
 
   # winehq
   sudo dpkg --add-architecture i386
@@ -58,6 +63,7 @@ ubuntu() {
   else
     error "error installing winehq"
   fi
+}
 
 javascript() {
   # node
@@ -114,6 +120,7 @@ chrome() {
   sudo apt install ./google-chrome*.deb  
   success "installed stable chrome"
 }
+
 gnome-tweak() {
   sudo apt install chrome-gnome-shell
   sudo apt-get install gnome-tweak-tool
@@ -121,18 +128,28 @@ gnome-tweak() {
   sudo apt-get update
   success "installed gnome | now restart the laptop && Search for and download compatible shell themes. For example in 'https://www.gnome-look.org/'."
 }
+
 adb() {
   sudo apt-get install adb
   success "installed adb for android"
 }
+
 zsh() {
   sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
   success "installed oh my zsh | now restart the computer"
 }
+
 heroku() {
   sudo snap install --classic heroku
   success "heroku installed"
 }
+
+back-lightdm () {
+  # ~ sudo cp /etc/lightdm/lightdm.conf /etc/lightdm/lightdm.conf.old 
+  # ~ sudo su lightdm -s /bin/bash
+  # Then ~ dconf-editor
+}
+
 test() {
   success "If you are seeing this, the script is working"
 }
@@ -149,5 +166,6 @@ main() {
   javascript()
   chrome()
 }
+
 # calling the main function
 main
