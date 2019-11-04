@@ -4,4 +4,5 @@ back-lightdm () {
   dconf-editor
 }
 
-
+To run the shell file:
+  chmod a+x scripts.sh
