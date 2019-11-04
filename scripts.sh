@@ -1,4 +1,3 @@
-#!/bin/zsh
 #!/bin/bash
 
 # resources
@@ -42,10 +41,19 @@ ubuntu() {
   # vlc
   sudo apt install vlc
   success "installed vlc"
+
+  # adb
+  sudo apt-get install adb
+  success "installed adb for android"
+
   
   # font manager
   sudo apt-get install font-manager
   success "font manager"
+
+  # heroku
+  sudo snap install --classic heroku
+  success "heroku installed"
 
   # winehq
   sudo dpkg --add-architecture i386
@@ -102,14 +110,18 @@ javascript() {
   else
     error "error installing angular 6"
   fi
+
+  # zsh
+  sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+  success "installed oh my zsh | now restart the computer"
 }
 
 git() {
   sudo apt-get install git-all
-  #configuration
-  # username:
+  # configuration
+  # username
   git config --global user.name "Dnmrk4"
-  # email address:
+  # email address
   git config --global user.email "danmark.chemuren@gmail.com"
   success "installed git"
 }
@@ -122,33 +134,14 @@ chrome() {
 }
 
 gnome-tweak() {
-  sudo apt install chrome-gnome-shell
+  sudo apt-get install chrome-gnome-shell
   sudo apt-get install gnome-tweak-tool
   sudo add-apt-repository ppa:webupd8team/gnome3
   sudo apt-get update
   success "installed gnome | now restart the laptop && Search for and download compatible shell themes. For example in 'https://www.gnome-look.org/'."
 }
 
-adb() {
-  sudo apt-get install adb
-  success "installed adb for android"
-}
 
-zsh() {
-  sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-  success "installed oh my zsh | now restart the computer"
-}
-
-heroku() {
-  sudo snap install --classic heroku
-  success "heroku installed"
-}
-
-back-lightdm () {
-  # ~ sudo cp /etc/lightdm/lightdm.conf /etc/lightdm/lightdm.conf.old 
-  # ~ sudo su lightdm -s /bin/bash
-  # Then ~ dconf-editor
-}
 
 test() {
   success "If you are seeing this, the script is working"
@@ -157,14 +150,11 @@ test() {
 main() {
   # call all other functions here
   test
-  git()
-  heroku()
-  adb()
-  zsh()
-  gnome_tweak()
-  ubuntu()
-  javascript()
-  chrome()
+  git
+  gnome_tweak
+  ubuntu
+  javascript
+  chrome
 }
 
 # calling the main function

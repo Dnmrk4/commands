@@ -1,0 +1,7 @@
+back-lightdm () {
+  sudo cp /etc/lightdm/lightdm.conf /etc/lightdm/lightdm.conf.old 
+  sudo su lightdm -s /bin/bash
+  dconf-editor
+}
+
+
