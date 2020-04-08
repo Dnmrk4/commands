@@ -116,15 +116,15 @@ javascript() {
   success "installed oh my zsh | now restart the computer"
 }
 
-git() {
-  sudo apt-get install git-all
+#git() {
+  #sudo apt-get install git-all
   # configuration
   # username
-  git config --global user.name "Dnmrk4"
+  #git config --global user.name "Dnmrk4"
   # email address
-  git config --global user.email "danmark.chemuren@gmail.com"
-  success "installed git"
-}
+  #git config --global user.email "danmark.chemuren@gmail.com"
+  #success "installed git"
+#}
 
 chrome() {
   sudo apt-get install libxss1 libappindicator1 libindicator7
@@ -150,7 +150,6 @@ test() {
 main() {
   # call all other functions here
   test
-  git
   gnome_tweak
   ubuntu
   javascript
