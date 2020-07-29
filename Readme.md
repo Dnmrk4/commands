@@ -12,23 +12,23 @@ This repo provides a shell script that has commands to help you setup you ubuntu
         ./scripts.sh
     ```
 ## dependencies/packages
-~ Git
-~ curl
-~ VLC
-~ Slack
-~ nodeJS
-~ JavaScript
-~ npm
-~ Angular 9.1.3
-~ Typescript
-~ wget
-~ ohmyzsh
-~ Gnome tweaks
-~ Google Chrome
-~ Winehq
-~ Snap
-~ Font-manager
-~ Heroku 
+- Git
+- curl
+- VLC
+- Slack
+- nodeJS
+- JavaScript
+- npm
+- Angular 9.1.3
+- Typescript
+- wget
+- ohmyzsh
+- Gnome tweaks
+- Google Chrome
+- Winehq
+- Snap
+- Font-manager
+- Heroku 
 
 
 ## Contributing
